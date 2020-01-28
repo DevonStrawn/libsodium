@@ -507,6 +507,41 @@ int crypto_onetimeauth_update(crypto_onetimeauth_state *state,
 int crypto_onetimeauth_final(crypto_onetimeauth_state *state,
                              unsigned char *out);
 
+// sodium/crypto_pwhash.h
+
+int crypto_pwhash_alg_default(void);
+
+size_t crypto_pwhash_bytes_min(void);
+size_t crypto_pwhash_bytes_max(void);
+
+size_t crypto_pwhash_passwd_min(void);
+size_t crypto_pwhash_passwd_max(void);
+
+size_t crypto_pwhash_saltbytes(void);
+size_t crypto_pwhash_strbytes(void);
+
+const char *crypto_pwhash_strprefix(void);
+
+size_t crypto_pwhash_opslimit_min(void);
+size_t crypto_pwhash_opslimit_max(void);
+
+size_t crypto_pwhash_memlimit_min(void);
+size_t crypto_pwhash_memlimit_max(void);
+
+size_t crypto_pwhash_opslimit_sensitive(void);
+size_t crypto_pwhash_memlimit_sensitive(void);
+
+size_t crypto_pwhash_opslimit_interactive(void);
+size_t crypto_pwhash_memlimit_interactive(void);
+
+int crypto_pwhash_str(char out[128U],
+                      const char * const passwd, unsigned long long passwdlen,
+                      unsigned long long opslimit, size_t memlimit);
+
+int crypto_pwhash_str_verify(const char str[128U],
+                             const char * const passwd,
+                             unsigned long long passwdlen);
+
 // sodium/crypto_pwhash_scryptsalsa208sha256.h
 enum {
 	crypto_pwhash_scryptsalsa208sha256_SALTBYTES = 32U,
